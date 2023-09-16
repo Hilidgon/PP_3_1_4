@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="d-md-block col-4 mx-auto">
+            <br>
+            <form name="f" method="post" action="/process_login">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                <p class="h3"><strong>Please sign in</strong></p>
+                <input type="text" name="username" class="form-control" id="username" placeholder="Email address">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                <div class="mb-2 bd-highlight"></div>
+                <div th:if="${param.error}" class="alert alert-danger text-center" role="alert">
+                    Incorrect email or password!
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary btn-block form-control">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
